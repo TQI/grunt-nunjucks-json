@@ -59,11 +59,13 @@ grunt.initConfig({
 })
 ```
 
+```shell
 .
 ├── Gruntfile.js
 └── templates
     ├── page.tpl
     └── page.json
+```
 
 
 ## Contributing
