@@ -5,5 +5,5 @@
 	{% endfor %}
 
 	{% set item = "Daniel" %}
-	{% include "./includes/item.tpl"  %}
+	{% include "./includes/item.tpl" %}
 </ul>
