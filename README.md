@@ -46,8 +46,7 @@ grunt.initConfig({
 grunt.initConfig({
   nunjucks_json: {
       default_options: {
-        options: {
-        },
+        options: {},
         files: [{
           expand: true,
           flatten: true,
@@ -59,6 +58,13 @@ grunt.initConfig({
     },
 })
 ```
+
+.
+├── Gruntfile.js
+└── templates
+    ├── page.tpl
+    └── page.json
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
