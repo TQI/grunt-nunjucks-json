@@ -37,16 +37,31 @@ grunt.initConfig({
 
 ### Options
 
+#### metadata
+Type: `String`
+Default: `metadata`
+
+#### nunjucksOptions
+Type: `Object`
+Default: `{
+                trimBlocks: true,
+                lstripBlocks: false,
+                autoscape: true
+            }`
+
 
 ### Usage Examples
-
-#### Default Options
 
 ```js
 grunt.initConfig({
   nunjucks_json: {
       default_options: {
-        options: {},
+        options: {
+            metadata: 'templates/metadata',
+            nunjucksOptions: {
+                autoscape: true
+            }
+        },
         files: [{
           expand: true,
           flatten: true,
@@ -58,13 +73,23 @@ grunt.initConfig({
     },
 })
 ```
+page.js
+```js
+module.exports = {
+  title: "Olá",
+  names: require('./partials/names.json')
+};
+```
 
 ```shell
 .
 ├── Gruntfile.js
 └── templates
-    ├── page.tpl
-    └── page.json
+    ├── metadata
+    |   ├── partials
+    |   |   └──names.json
+    |   └── page.js
+    └── page.tpl
 ```
 
 

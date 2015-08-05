@@ -1044,12 +1044,26 @@ body .markdown-body
 </code></pre>
 
 <h3 id="options"><a name="user-content-options" href="#options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Options</h3>
+<h4 id="metadata"><a name="user-content-metadata" href="#metadata" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>metadata</h4>
+<p>Type: <code>String</code><br />
+Default: <code>metadata</code></p>
+<h4 id="nunjucksoptions"><a name="user-content-nunjucksoptions" href="#nunjucksoptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>nunjucksOptions</h4>
+<p>Type: <code>Object</code><br />
+Default: <code>{
+                trimBlocks: true,
+                lstripBlocks: false,
+                autoscape: true
+            }</code></p>
 <h3 id="usage-examples"><a name="user-content-usage-examples" href="#usage-examples" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Usage Examples</h3>
-<h4 id="default-options"><a name="user-content-default-options" href="#default-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Default Options</h4>
-<pre><code class="js">grunt.initConfig({
+<p><pre><code class="js">grunt.initConfig({
   nunjucks_json: {
       default_options: {
-        options: {},
+        options: {
+            metadata: 'templates/metadata',
+            nunjucksOptions: {
+                autoscape: true
+            }
+        },
         files: [{
           expand: true,
           flatten: true,
@@ -1060,13 +1074,21 @@ body .markdown-body
       }
     },
 })
-</code></pre>
-
+</code></pre><br />
+page.js<br />
+<pre><code class="js">module.exports = {
+  title: &quot;Olá&quot;,
+  names: require('./partials/names.json')
+};
+</code></pre></p>
 <pre><code class="shell">.
 ├── Gruntfile.js
 └── templates
-    ├── page.tpl
-    └── page.json
+    ├── metadata
+    |   ├── partials
+    |   |   └──names.json
+    |   └── page.js
+    └── page.tpl
 </code></pre>
 
 <h2 id="contributing"><a name="user-content-contributing" href="#contributing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contributing</h2>

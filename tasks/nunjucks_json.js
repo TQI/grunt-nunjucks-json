@@ -16,7 +16,7 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('nunjucks_json', 'The best Grunt plugin ever.', function() {
 
         var options = this.options({
-            metadata: '.',
+            metadata: 'metadata',
             nunjucksOptions: {
                 trimBlocks: true,
                 lstripBlocks: false,
