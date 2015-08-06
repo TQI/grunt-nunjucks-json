@@ -92,6 +92,14 @@ module.exports = {
     └── page.tpl
 ```
 
+## Reference
+
+[Nunjucks](https://mozilla.github.io/nunjucks/)
+
+[Jinja2 (Nunjucks Father)](http://jinja.pocoo.org/docs/dev/)
+
+[Nunjucks Changelog](http://nunjucks.tumblr.com/)
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
