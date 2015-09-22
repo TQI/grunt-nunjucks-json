@@ -6,7 +6,7 @@ var grunt = require('grunt');
 
 exports.nunjucks_json = {
   setUp: function (done) {
-    done('ha');
+    done('hey');
   },
   default_options: function (test) {
     test.expect(1);
