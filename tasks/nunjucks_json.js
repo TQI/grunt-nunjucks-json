@@ -8,54 +8,37 @@
 
 'use strict';
 
-var nunjucks = require('nunjucks'),
-    path = require('path');
+var njson = require('./lib/nunjucks_json');
 
 module.exports = function(grunt) {
+    grunt.registerMultiTask('nunjucks_json', 'Binds data to templates', function() {
 
-    grunt.registerMultiTask('nunjucks_json', 'The best Grunt plugin ever.', function() {
+        function writer(file, message) {
+            grunt.file.write(file.dest, njson.contents);
+            grunt.log.ok([njson.filepath, '+' , njson.metadataFilePath, '->', file.dest ].join(' '));
+        }
 
-        var options = this.options({
-            metadata: 'metadata',
-            nunjucksOptions: {
-                trimBlocks: true,
-                lstripBlocks: false,
-                autoscape: true
+        function isFile(filepath) {
+
+            var exists = grunt.file.exists(filepath);
+
+            if (!exists) {
+                grunt.log.warn('Source file "' + filepath + '" not found.');
             }
-        });
 
-        nunjucks.configure(options.nunjucksOptions);
+            return exists;
+        }
 
 
+        // Share settings
+        njson.setOptions(this.options({ writer: writer }));
+
+        // Template rendering
         this.files.forEach(function(file) {
 
-            var src = file.src.filter(function(filepath) {
-                if (!grunt.file.exists(filepath)) {
-                    grunt.log.warn('Source file "' + filepath + '" not found.');
-                    return false;
-                } else {
-                    return true;
-                }
-            });
+            var templateFileWriter = njson.getWriter(file).bind(njson);
 
-            src.forEach(function(filepath) {
-
-                var outputFile = path.basename(filepath, path.extname(filepath)),
-                    metadataFile = path.resolve() + '/' + options.metadata + '/' + outputFile + ".js",
-                    tplVars;
-
-                try {
-                    tplVars = require(metadataFile);
-                } catch (err) {
-                    tplVars = {};
-                }
-
-                grunt.file.write(file.dest, nunjucks.render(filepath, tplVars));
-
-                grunt.log.writeln('✔ ' + filepath + " -> " + file.dest + ' ' + metadataFile);
-            });
-
+            file.src.filter(isFile).forEach(templateFileWriter);
         });
     });
-
 };
