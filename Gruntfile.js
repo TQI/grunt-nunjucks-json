@@ -27,6 +27,29 @@ module.exports = function(grunt) {
         clean: {
             tests: ['tmp']
         },
+        
+// function stringify(json) {
+//     return JSON.stringify(json);
+// }
+
+// module.exports = {
+//     options: {
+//         templateDir: '<%= defaults.src %>/html/page',
+//         metadataDir: '<%= defaults.src %>/html/metadata',
+//         filters: [
+//             {name: 'stringify', handler: stringify}
+//         ]
+//     },
+//     preview: {
+//         // outputDir: '<%= defaults.preview %>/html',
+//         files: [{
+//             cwd: '<%= defaults.src %>/html/page/',
+//             src: '**/*.html',
+//             dest: '<%= defaults.preview %>/html',
+//             expand: true
+//         }]
+//     }
+// };
 
         nunjucks_json: {
             default_options: {
