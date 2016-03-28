@@ -32,7 +32,6 @@ module.exports = function(grunt) {
 //     return JSON.stringify(json);
 // }
 
-// module.exports = {
 //     options: {
 //         templateDir: '<%= defaults.src %>/html/page',
 //         metadataDir: '<%= defaults.src %>/html/metadata',
@@ -49,7 +48,6 @@ module.exports = function(grunt) {
 //             expand: true
 //         }]
 //     }
-// };
 
         nunjucks_json: {
             default_options: {
